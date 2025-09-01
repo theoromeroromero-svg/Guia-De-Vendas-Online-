@@ -1,103 +1,79 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minha Loja Online</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f5f5f5;
-      color: #333;
-    }
-    header {
-      background: #007bff;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    .produtos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      padding: 2rem;
-    }
-    .card {
-      background: white;
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: 0.3s;
-    }
-    .card:hover {
-      transform: scale(1.05);
-    }
-    .card img {
-      max-width: 100%;
-      border-radius: 8px;
-    }
-    .card h3 {
-      margin: 0.5rem 0;
-    }
-    .preco {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #28a745;
-    }
-    button {
-      margin-top: 0.5rem;
-      padding: 0.6rem 1rem;
-      border: none;
-      border-radius: 5px;
-      background: #007bff;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Bem-vindo à Minha Loja Online</h1>
-    <p>Ofertas exclusivas só hoje!</p>
-  </header>
+import React from "react";
+import { Button } from "@/components/ui/button";
 
-  <section class="produtos">
-    <div class="card">
-      <img src="https://via.placeholder.com/250" alt="Produto 1">
-      <h3>Produto 1</h3>
-      <p class="preco">R$ 99,90</p>
-      <button>Comprar</button>
-    </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/250" alt="Produto 2">
-      <h3>Produto 2</h3>
-      <p class="preco">R$ 149,90</p>
-      <button>Comprar</button>
-    </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/250" alt="Produto 3">
-      <h3>Produto 3</h3>
-      <p class="preco">R$ 199,90</p>
-      <button>Comprar</button>
-    </div>
-  </section>
+export default function Storefront() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
+      {/* Topbar */}
+      <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold">Vx</div>
+            <span className="font-extrabold text-xl tracking-tight">VitrineX</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button size="sm" disabled>Carrinho</Button>
+          </div>
+        </div>
+      </header>
 
-  <footer>
-    <p>Minha Loja Online © 2025 — Todos os direitos reservados</p>
-  </footer>
-</body>
-</html>
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
+                Sua nova loja online, simples e poderosa
+              </h1>
+              <p className="mt-4 text-slate-600 text-lg">
+                Cadastre produtos, receba pagamentos e entregue com confiança. Tudo em uma única página moderna.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button size="lg" disabled>Ver produtos</Button>
+              </div>
+            </div>
+            <div className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1600&auto=format&fit=crop"
+                alt="Loja online"
+                className="rounded-3xl shadow-2xl"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Seção de Produtos */}
+      <section id="produtos" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+        <h2 className="text-2xl font-bold tracking-tight">Produtos em destaque</h2>
+        <p className="mt-4 text-slate-500">Nenhum produto disponível no momento.</p>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h3 className="text-3xl font-extrabold tracking-tight">Pronto para vender hoje?</h3>
+            <p className="mt-3 text-slate-300">
+              Este é um template React + Tailwind pronto para você personalizar com seus produtos reais e integrar com seu meio de pagamento favorito.
+            </p>
+          </div>
+          <div className="flex md:justify-end items-center gap-3">
+            <Button size="lg" variant="secondary">Começar agora</Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Rodapé */}
+      <footer className="border-t">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8 text-sm">
+          <div>
+            <div className="font-extrabold text-lg">VitrineX</div>
+            <p className="mt-2 text-slate-600">Seu ponto de partida para vender online com estilo e performance.</p>
+          </div>
+        </div>
+        <div className="text-center text-xs text-slate-500 pb-8">© {new Date().getFullYear()} VitrineX. Todos os direitos reservados.</div>
+      </footer>
+    </div>
+  );
+}
